@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D world</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: black;
+            overflow: hidden;
+            cursor: none;
+        }
+        
+        #mainDiv {
+            width: 500px;
+            height: 500px;
+            margin: 200px auto;
+            perspective: 700px;
+        }
+        
+        #boxDiv {
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            transform: translateZ(500px);
+        }
+        
+        #boxDiv div {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+        
+        #front {
+            transform: translateZ(250px) rotateY(180deg);
+        }
+        
+        #back {
+            transform: translateZ(-250px);
+        }
+        
+        #left {
+            transform: rotateY(90deg) translateX(-250px);
+            transform-origin: left;
+        }
+        
+        #right {
+            transform: rotateY(-90deg) translateX(250px);
+            transform-origin: right;
+        }
+        
+        #top {
+            transform: rotateX(-90deg) translateY(-250px);
+            transform-origin: top;
+        }
+        
+        #bottom {
+            transform: rotateX(90deg) translateY(250px);
+            transform-origin: bottom;
+        }
+        
+        img {
+            width: 502px;
+            height: 502px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainDiv">
+        <div id="boxDiv">
+            <div id="front"> <img src="./penguins (3)/front.jpg"></div>
+            <div id="back"> <img src="./penguins (3)/back.jpg"></div>
+            <div id="left"> <img src="./penguins (3)/left.jpg"></div>
+            <div id="right"> <img src="./penguins (3)/right.jpg"></div>
+            <div id="top"> <img src="./penguins (3)/top.jpg"></div>
+            <div id="bottom"> <img src="./penguins (3)/bottom.jpg"></div>
+        </div>
+    </div>
+    <script>
+        var world = document.getElementById('boxDiv');
+        var x;
+        var y;
+        document.addEventListener('mousemove', function(e) {
+            x = e.clientX;
+            y = e.clientY;
+            world.style.transform = "translateZ(600px) rotateY(" + x + "deg) rotateX(" + y + "deg)"
+        })
+    </script>
+</body>
+
+</html>
